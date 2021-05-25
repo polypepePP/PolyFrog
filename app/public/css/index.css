@@ -45,7 +45,7 @@ html,body {
     height: 100%;
     width: auto;
     overflow-x: hidden;
-    background: #000;
+    background: rgb(41, 107, 41);
     color: rgb(220, 220, 220);
 }
 
