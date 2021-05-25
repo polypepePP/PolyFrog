@@ -1,0 +1,31 @@
+{
+  "name": "theonering",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LOTRfinance/theonering.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LOTRfinance/theonering/issues"
+  },
+  "homepage": "https://github.com/LOTRfinance/theonering#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "path": "^0.12.7",
+    "web3": "^1.3.4",
+    "web3-eth-contract": "^1.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
