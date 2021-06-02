@@ -9,8 +9,9 @@
     <title>PolyPepe Farm</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="./../css/index.css">
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonmous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./../css/style.css">
         <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B6M8LSHL3"></script>
     <script>
@@ -22,84 +23,71 @@
     </script>
 </head>
 
-<body style="background-color: green; color: white;">
+<body style="background-image: url(../images/backgroundpepegreen.jpg);background-repeat: repeat; 
+background-attachment: fixed;background-size: 26%; color: white; overflow-x: hidden;">
     <div class="text-center">
-        <button id="enableMeta" class="enableEthereumButton btn" style="background-color: grey; color: black;">Enable Metamask</button>
+        <button id="enableMeta" class="enableEthereumButton btn btn-primary">Enable Metamask</button>
     </div>
-    <div class="row">
-        <div class="col-sm-6 p-3 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 pl-3 pr-3 pt-3 pb-0 text-center">
             <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                <div class="card-body">
-                    <p>Frog Farm Supply: <br><span id="farmBalance"></span>&nbsp;</p>
-                </div>
-            </div>
-            <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                <div class="card-body">
-                    <p>Total Frog Rewards Paid: <br><span id="totalPaid"></span>&nbsp;</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 p-3 text-center">
-            <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                    <div class=" card-body">
-                        <div class="intro" id="intro">
-                            <p>Wallet Address: <br><span class="showAccount"></span>&nbsp;</p>
-                            <p>MATIC Balance: <br><span class="showBalance"></span>&nbsp;</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 p-3 text-center">
-            <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                <div class="card-header">
                     <h4>DEPOSIT</h4>
-                </div>
                 <div class="card-body">
                     <p>
-                        Users PolyPepe Token Balance: <br>
+                        My PolyPepe LP Token Balance: <br>
                         <span id="LPTokenBalanceInUsersWallet">
                             &nbsp;
                         </span>
                     </p>
                     <form>
-                        <input type="number" id="input_amount" name="amount_input" placeholder="deposit amount (LP tokens)"><br><br>
+                        <input class="text-center" type="number" id="input_amount" name="amount_input" placeholder="Deposit LP Tokens"><br><br>
                     </form>
                     
                     <button onclick="depositLPTokens()" class="btn btn-primary" style="background-color:#3195d6;" id="deposit">Deposit</button>
                     <button class="btn btn-primary" style="background-color:grey;" id="isApproved" hidden disabled>Approved</button>
                     <button onclick="approveLP_account()" class="btn btn-primary" style="background-color:#3195d6;" id="approve">Approve</button>
-                    <div class="card-footer text-muted">
-                        <p id="deposit_transaction">&nbsp;</p>
-                    </div>
+                    <p class="text-muted text-center" id="deposit_transaction">&nbsp;</p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 p-3 text-center">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 pl-3 pr-3 pt-3 pb-0 text-center">
             <div class="card" style="background-color: rgb(39, 39, 39); color: rgb(255, 255, 255);">
-                <div class="card-header">
                     <h4>WITHDRAW</h4>
-                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
-                            <p>Users Deposited PepeToken Token Balance: <br><span id="LPTokenBalance">&nbsp;</span></p>
+                            <p>Frog Farm Supply<br><span id="farmBalance"></span>&nbsp;</p>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <p>Users Pending Frog Balance: <br><span id="pendingYieldTokenBalance">&nbsp;</span></p>
+                            <p>Total Frog Tokens Paid<br><span id="totalPaid"></span>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <p>My Deposited PepeToken LP Balance: <br><span id="LPTokenBalance">&nbsp;</span></p>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <p>My Pending Frog Rewards: <br><span id="pendingYieldTokenBalance">&nbsp;</span></p>
                         </div>
                     </div>
                     <div>
-                        <p>Users Percent of Farm: <br><span id="percentOfFarm">&nbsp;</span></p>
+                        <p>My Percent of Farm: <br><span id="percentOfFarm">&nbsp;</span></p>
                     </div>
                     <form>
-                        <input type="number" id="input_amount_withdraw" name="amount_input_withdraw"
-                            placeholder="withdraw amount (LP tokens)"><br><br>
+                        <input class="text-center" type="number" id="input_amount_withdraw" name="amount_input_withdraw"
+                            placeholder="Withdraw LP Tokens"><br><br>
                     </form>
-                    <button onclick="withdrawLPTokens()" class="btn btn-primary" style="background-color:#3195d6;" id="withdraw">Withdraw</button>
+                    <div>
+
+                        <button onclick="withdrawLPTokens()" class="btn btn-primary" style="background-color:#3195d6;" id="withdraw">Withdraw</button>
+                        <div class="popup" onclick="popup()"><i class="fa fa-info-circle"></i>
+                            <span class="popuptext" id="Popup">Withdrawing any amount of LP tokens also withdraws your Frog rewards. Please re-deposit your LP
+                                tokens to continue receiving rewards.</span>
+                        </div>
+                    </div>
+                    <!-- <button onclick="harvest()" class="btn btn-primary" style="background-color:#3195d6;" id="withdraw">Harvest</button> -->
                     <div class="card-footer text-muted">
                         <p id="withdraw_transaction">&nbsp;</p>
                     </div>

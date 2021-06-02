@@ -9,8 +9,8 @@ if (typeof window.ethereum !== 'undefined') {
 }
 
 const ethereumButton = document.querySelector('.enableEthereumButton')
-const showAccount = document.querySelector('.showAccount')
-const showBalance = document.querySelector('.showBalance')
+// const showAccount = document.querySelector('.showAccount')
+// const showBalance = document.querySelector('.showBalance')
 
 let currentUsersLpBalance = 0
 let currentUsersDepositedLpBalance = 0
@@ -20,11 +20,20 @@ ethereumButton.addEventListener('click', () => {
     getAccount()
 })
 
+function popup() {
+    var popup = document.getElementById("Popup");
+    popup.classList.toggle("show");
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 async function getAccount() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts'})
     // console.log(accounts[0], 'accounts')
     const account = accounts[0]
-    showAccount.innerHTML = account
+    // showAccount.innerHTML = account
     currentAccount = account
 
     const balance = await ethereum
@@ -34,7 +43,8 @@ async function getAccount() {
     })
     const read = parseInt(balance)/ 10**18
     // console.log(read.toFixed(5))
-    showBalance.innerHTML = read.toFixed(5)
+    
+    // showBalance.innerHTML = read.toFixed(5)
     document.getElementById('enableMeta').hidden = true
     getPoolBalance()
     getDepositedLPTokenBalance()
@@ -64,6 +74,11 @@ const LP_Contract = new web3Instance.eth.Contract(LP_address_abi, LP_address);
 const yield_address = '0x79104677448c6F84A88B8C75F66982A911267E79';
 const yield_address_abi = JSON.parse('[{"inputs":[{"internalType":"uint256","name":"initialSupply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]');
 const yield_Contract = new web3Instance.eth.Contract(yield_address_abi, yield_address);
+
+function harvest() {
+    
+    
+}
 
 
 function withdrawLPTokens() {
@@ -155,9 +170,9 @@ function checkApproval_account() {
     LP_Contract.methods.allowance(currentAccount, farm_address).call().then(function (isApprovedFor) {
         // console.log(isApprovedFor, "is approved for")
         if (isApprovedFor >= currentUsersLpBalance) {
-            // document.getElementById("approve").hidden = true;
+            document.getElementById("approve").hidden = true;
             // document.getElementById("isApproved").hidden = false;
-            // document.getElementById('farmBalance').innerHTML = balance
+            document.getElementById('farmBalance').innerHTML = balance
         }
     })
 }
@@ -166,7 +181,7 @@ function getPoolBalance() {
     yield_Contract.methods.balanceOf(farm_address).call().then(function (balanceOfFarm) {
         // console.log(parseInt(balanceOfFarm) / 10 ** 9, "Farm Balance")
         const balance = parseInt(balanceOfFarm) / 10 ** 18
-        document.getElementById('farmBalance').innerHTML = balance
+        document.getElementById('farmBalance').innerHTML = Number(balance).toLocaleString()
     })
 }
 
@@ -175,7 +190,7 @@ function getDepositedLPTokenBalance() {
         // console.log(parseInt(balanceOfLPToken) / 10 ** 18, "Users LPToken Balance in Farm")
         const balance = parseInt(balanceOfLPToken) / 10 ** 18
         currentUsersDepositedLpBalance = balance
-        document.getElementById('LPTokenBalance').innerHTML = balance
+        document.getElementById('LPTokenBalance').innerHTML = Number(balance).toLocaleString()
     })
 }
 
@@ -183,7 +198,7 @@ function getYieldBalanceForUser() {
     farm_Contract.methods.pending(0, currentAccount).call().then(function (yieldBalanceForUser) {
         // console.log(parseInt(yieldBalanceForUser) / 10 ** 9, "yield Balance For User")
         const balance = parseInt(yieldBalanceForUser) / 10 ** 18
-        document.getElementById('pendingYieldTokenBalance').innerHTML = balance
+        document.getElementById('pendingYieldTokenBalance').innerHTML = Number(balance).toLocaleString()
     })
 }
 
@@ -192,7 +207,7 @@ function getWalletBalanceOfLPToken() {
         // console.log(parseInt(balanceOfLPTokenInUsersWallet) / 10 ** 18, "balance Of LP Token In Users Wallet")
         const balance = parseInt(balanceOfLPTokenInUsersWallet) / 10 ** 18
         currentUsersLpBalance = balance
-        document.getElementById('LPTokenBalanceInUsersWallet').innerHTML = balance
+        document.getElementById('LPTokenBalanceInUsersWallet').innerHTML = Number(balance).toLocaleString()
     })
 }
 
@@ -222,6 +237,6 @@ function paidOut() {
     farm_Contract.methods.paidOut().call().then(function (totalPaidRewards) {
         // console.log(parseInt(yieldBalanceForUser) / 10 ** 9, "yield Balance For User")
         const balance = parseInt(totalPaidRewards) / 10 ** 18
-        document.getElementById('totalPaid').innerHTML = balance
+        document.getElementById('totalPaid').innerHTML = Number(balance).toLocaleString()
     })
 }
