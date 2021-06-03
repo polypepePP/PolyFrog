@@ -796,7 +796,7 @@ pragma solidity 0.6.12;
 //
 // Cloned from https://github.com/SashimiProject/sashimiswap/blob/master/contracts/MasterChef.sol
 // Modified by LTO Network to work for non-mintable ERC20.
-contract FarmTest is Ownable {
+contract FROG_FARM is Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 

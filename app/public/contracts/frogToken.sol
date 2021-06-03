@@ -33,34 +33,6 @@ interface IERC20 {
 pragma solidity >=0.6.0 <0.8.0;
 
 library SafeMath {
-    function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        uint256 c = a + b;
-        if (c < a) return (false, 0);
-        return (true, c);
-    }
-
-    function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b > a) return (false, 0);
-        return (true, a - b);
-    }
-
-    function tryMul(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (a == 0) return (true, 0);
-        uint256 c = a * b;
-        if (c / a != b) return (false, 0);
-        return (true, c);
-    }
-
-    function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
-        return (true, a / b);
-    }
-
-    function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
-        return (true, a % b);
-    }
-
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
         require(c >= a, "SafeMath: addition overflow");
@@ -145,17 +117,18 @@ abstract contract Ownable is Context {
 
 pragma solidity >=0.6.0 <0.8.0;
 
-contract TESTFROG is Ownable, IERC20 {
+contract FROG_TOKEN is Ownable, IERC20 {
     using SafeMath for uint256;
 
     mapping (address => uint256) private _balances;
 
     mapping (address => mapping (address => uint256)) private _allowances;
     
-    // prevents token from being traded on exchanges
     mapping (address => bool) private blacklistedAddress;
 
     uint256 private _totalSupply;
+    
+    bool private mintingDisabled;
 
     string private _name;
     string private _symbol;
@@ -166,6 +139,15 @@ contract TESTFROG is Ownable, IERC20 {
         _symbol = symbol_;
         _decimals = 18;
         _mint(msg.sender, amount_);
+    }
+    
+    function disableMint() public onlyOwner {
+        require(!mintingDisabled);
+        mintingDisabled = true;
+    }
+    
+    function isMintDisabled() public view returns (bool) {
+        return mintingDisabled;
     }
     
     function isBlacklisted(address account) public view returns (bool) {
@@ -230,19 +212,18 @@ contract TESTFROG is Ownable, IERC20 {
         return true;
     }
     
-    function burn(uint256 amount) external {
+    function burn(uint256 amount) public {
         _burn(msg.sender, amount);
     }
     
-    function mint(address account, uint256 amount) external onlyOwner {
+    function mint(address account, uint256 amount) public onlyOwner {
+        require(!mintingDisabled);
         _mint(account, amount);
     }
 
     function _transfer(address sender, address recipient, uint256 amount) internal virtual {
-        // // address cannot be blacklisted
-        // require(!isBlacklisted(recipient) || isBlacklisted(sender));
         require(sender != address(0), "ERC20: transfer from the zero address");
-        // require(recipient != address(0), "ERC20: transfer to the zero address");
+        require(recipient != address(0), "ERC20: transfer to the zero address");
 
         _beforeTokenTransfer(sender, recipient, amount);
 
