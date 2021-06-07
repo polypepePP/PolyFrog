@@ -172,7 +172,10 @@ function checkApproval_account() {
         if (isApprovedFor >= currentUsersLpBalance) {
             document.getElementById("approve").hidden = true;
             // document.getElementById("isApproved").hidden = false;
-            document.getElementById('farmBalance').innerHTML = balance
+            // document.getElementById('farmBalance').innerHTML = balance
+        } else {
+            // document.getElementById('farmBalance').innerHTML = balance
+
         }
     })
 }

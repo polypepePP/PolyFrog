@@ -1,0 +1,58 @@
+{
+    "description": "Goat 6",
+    "external_url": "https://www.google.com",
+    "image": "https://gateway.pinata.cloud/ipfs/QmaPuxX6LbmzLSfW1mKL6DJcFq4V2Cvi5YTdt54rhtpaoF",
+    "name": "GOAT 6",
+    "attributes": [
+        {
+            "trait_type": "BOG Insurance",
+            "value": "YES"
+        },
+        {
+            "trait_type": "Coolness",
+            "value": "Most Awesome"
+        },
+        {
+            "trait_type": "Fud Resistance",
+            "value": "YES"
+        },
+        {
+            "trait_type": "Street Cred",
+            "value": 5.5
+        },
+        {
+            "trait_type": "Street Cred",
+            "value": "95%"
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Rarity",
+            "value": 100
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Power",
+            "value": 80
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Speed",
+            "value": 50
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Endurance",
+            "value": 90
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Edition",
+            "value": 1
+        }
+    ]
+}
