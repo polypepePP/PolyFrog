@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 // File: @openzeppelin/contracts/utils/Counters.sol
 
-
-
 pragma solidity ^0.8.0;
 
 /**
@@ -41,8 +39,6 @@ library Counters {
 }
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
 
-
-
 pragma solidity ^0.8.0;
 
 /**
@@ -67,10 +63,7 @@ interface IERC165 {
 }
 // File: @openzeppelin/contracts/utils/introspection/ERC165.sol
 
-
-
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Implementation of the {IERC165} interface.
@@ -96,8 +89,6 @@ abstract contract ERC165 is IERC165 {
 }
 
 // File: @openzeppelin/contracts/utils/Strings.sol
-
-
 
 pragma solidity ^0.8.0;
 
@@ -167,8 +158,6 @@ library Strings {
 
 // File: @openzeppelin/contracts/utils/Context.sol
 
-
-
 pragma solidity ^0.8.0;
 
 /*
@@ -191,7 +180,6 @@ abstract contract Context {
         return msg.data;
     }
 }
-
 
 pragma solidity ^0.8.0;
 
@@ -259,10 +247,7 @@ abstract contract Ownable is Context {
     }
 }
 
-
 // File: @openzeppelin/contracts/utils/Address.sol
-
-
 
 pragma solidity ^0.8.0;
 
@@ -454,8 +439,6 @@ library Address {
 
 // File: @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol
 
-
-
 pragma solidity ^0.8.0;
 
 /**
@@ -476,13 +459,9 @@ interface IERC721Receiver {
     function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data) external returns (bytes4);
 }
 
-
 // File: @openzeppelin/contracts/token/ERC721/IERC721.sol
 
-
-
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Required interface of an ERC721 compliant contract.
@@ -608,13 +587,9 @@ interface IERC721 is IERC165 {
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 }
 
-
 // File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol
 
-
-
 pragma solidity ^0.8.0;
-
 
 /**
  * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
@@ -637,18 +612,10 @@ interface IERC721Metadata is IERC721 {
      */
     function tokenURI(uint256 tokenId) external view returns (string memory);
 }
+
 // File: @openzeppelin/contracts/token/ERC721/ERC721.sol
 
-
-
 pragma solidity ^0.8.0;
-
-
-
-
-
-
-
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
@@ -1017,10 +984,7 @@ contract ERC721 is Ownable, ERC165, IERC721, IERC721Metadata {
 
 // File: @openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol
 
-
-
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev ERC721 token with storage based token URI management.
@@ -1103,46 +1067,29 @@ interface FrogInterface {
 
 pragma solidity ^0.8.0;
 
-
-
 contract NFT is ERC721URIStorage {
     
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
     
-    constructor(address _frogToken, string memory _metadata, uint256 _cost, uint256 _maxMintable) ERC721('TestNFT','TNFT') {
+    constructor(address _frogToken, string memory _metadata, string memory _firstEditionMetadata, uint256 _cost, uint256 _maxMintable) ERC721('TestABC','ABC') {
         frogToken = _frogToken;
+        firstEditionMetadata = _firstEditionMetadata;
         metadata = _metadata;
         cost = _cost;
         maxMintable = _maxMintable;
     }
     
-    // address public frogToken = 0x35436403fa84a8Dacc6139D747f3De77b49959D6;
-    // string public metadata = "https://gateway.pinata.cloud/ipfs/QmSfHT3uAkyi2RDCSGTwfiz5548CeMQ9UjDoQw25zojA1a";
-    // uint256 public cost = 10000000000000000000; //10
-    // uint256 public maxMintable = 10;
-    
     address public frogToken;
-    
+    bool public isPurchable;
+    string public firstEditionMetadata;
     string public metadata;
     uint256 public cost;
     uint256 public maxMintable;
     
-    // function setFrogTokenAddress(address frogtoken_) external onlyOwner{
-    //     FrogToken == frogtoken_;
-    // }
-    
-    function returnTotalSupplyOfFrogToken() public view returns (uint256) {
-        return FrogInterface(frogToken).totalSupply();
+    function totalSupply() public view returns (uint256) {
+        return _tokenIds.current();
     }
-    
-    // function mint(address recipient, string memory metadata) public returns (uint256) {
-    //     _tokenIds.increment();
-    //     uint256 newItemId = _tokenIds.current();
-    //     _mint(recipient, newItemId);
-    //     _setTokenURI(newItemId, metadata);
-    //     return newItemId;
-    // }
     
     function mint(address recipient) public onlyOwner returns (uint256) {
         _tokenIds.increment();
@@ -1152,9 +1099,22 @@ contract NFT is ERC721URIStorage {
         return newItemId;
     }
     
-    function totalSupply() public view returns (uint256) {
-        return _tokenIds.current();
+    function makePurchable() public onlyOwner {
+        if(!isPurchable) {
+        isPurchable = true;
+        }
+        else if(isPurchable) {
+        isPurchable = false;
+        }
     }
+    
+    function mintFirstEdition() public onlyOwner returns (uint256) {
+        _tokenIds.increment();
+        uint256 newItemId = _tokenIds.current();
+        _mint(owner(), newItemId);
+        _setTokenURI(newItemId, firstEditionMetadata);
+        return newItemId;
+    }  
     
     function batchMint(uint256 amount, address recipient) public onlyOwner {
         uint256 i = 1;
@@ -1165,14 +1125,11 @@ contract NFT is ERC721URIStorage {
     }
     
     function mintAfterTokenTransfer() public {
-        require(_tokenIds.current() <= maxMintable);
+        require(isPurchable, "this nft is currently unpurchable");
+        require((_tokenIds.current() + 1) <= maxMintable, "max nfts printed");
+        require(FrogInterface(frogToken).allowance(msg.sender, address(this)) >= cost, "not approved for purchase");
         FrogInterface(frogToken).transferFrom(msg.sender, address(this), cost);
         FrogInterface(frogToken).burn(cost);
         mint(msg.sender);
-    }
-    
-    function approveTokens() public {
-        FrogInterface(frogToken).approve(address(this), 100000000000000000000000000); //100m
-        // mint(msg.sender);
     }
 }

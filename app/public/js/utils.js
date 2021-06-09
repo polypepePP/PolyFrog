@@ -75,7 +75,62 @@ const yield_address = '0xb7BCeAED243fFDCA3a213EeC66d51AcaC8Ae3F3c';
 const yield_address_abi = JSON.parse('[{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"disableMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"excludeFromBlacklist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"includeInBlacklist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"isBlacklisted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isMintDisabled","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]');
 const yield_Contract = new web3Instance.eth.Contract(yield_address_abi, yield_address);
 
+
+
+
 function harvest() {   
+    const amount = 1
+    const format = web3Instance.utils.toWei("1", "ether")
+    farm_Contract.methods.withdraw(0, format).send({ from: currentAccount })
+        .on('transactionHash', tx => {
+            console.log("Transaction: ", tx);
+            // document.getElementById('withdraw_transaction').innerHTML = process;
+        })
+        .then(receipt => {
+            farm_Contract.methods.deposit(0, format).send({ from: currentAccount })
+            .on('transactionHash', tx => {
+                console.log("Transaction: ", tx);
+                // document.getElementById('deposit_transaction').innerHTML = process;
+            })
+            .then(receipt => {
+                console.log('Mined', receipt)
+                if (receipt.status == '0x1' || receipt.status == 1) {
+                    // console.log("Transaction Successful")
+                    // document.getElementById('deposit_transaction').innerHTML = etherscan_tx + receipt.transactionHash + success
+                }
+                else {
+                    console.log('Transaction Failed')
+                    // document.getElementById('deposit_transaction').innerHTML = reverted
+                }
+            })
+            .catch(err => {
+                console.log('Error', err)
+                document.getElementById('deposit_transaction').innerHTML = "Transaction Canceled"
+                // setTimeout(function () {
+                //     document.getElementById('deposit_transaction').innerHTML = "&nbsp;"
+                // }, 5000);
+            })
+            .finally(() => {
+                // getDepositedLPTokenBalance()
+                // getYieldBalanceForUser()
+                // getWalletBalanceOfLPToken()
+                // getPoolBalance()
+            })
+        })
+        .catch(err => {
+            console.log('Error', err)
+            // document.getElementById('withdraw_transaction').innerHTML = "Transaction Canceled"
+            // setTimeout(function () {
+            //     document.getElementById('withdraw_transaction').innerHTML = "&nbsp;"
+            // }, 5000);
+        })
+        .finally(() => {
+            // getDepositedLPTokenBalance()
+            // getYieldBalanceForUser()
+            // getWalletBalanceOfLPToken()
+            // getPoolBalance()
+            // paidOut()
+        })
 }
 
 function withdrawLPTokens() {

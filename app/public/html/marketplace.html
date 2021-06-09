@@ -23,22 +23,38 @@
     </script>
 </head>
 
-<body style="background-image: url(../images/backgroundpepegreen.jpg);background-repeat: repeat; 
-            background-attachment: fixed;background-size: 26%; color: black; overflow-x: hidden;">
-    <div class="text-center">
-        <button id="enableMeta" class="enableEthereumButton btn btn-primary">Enable Metamask</button>
+<body style="background-color: grey; color: black; overflow-x: hidden;">
+    <div class="row justify-content-center mt-3 text-center m-3">
+        <div class="col-md-4 col-sm-12 rounded card-sl" style="background-color: white; color: black;">
+                <div class="row border-bottom">
+                    <div class="col-12">
+                        <h5>Address</h5>
+                        <p id="currentAddress">&nbsp;</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Matic Balance</p>
+                        <p id="currentAddressBalance">&nbsp;</p>
+                    </div>
+                    <div class="col-6">
+                        <p>FROG Balance</p>
+                        <p id="currentAddressFrogBalance">&nbsp;</p>
+                    </div>
+                </div>
+            <div class="text-center">
+                <button id="enableMeta" class="enableEthereumButton btn btn-warning border border-danger">Enable Metamask</button>
+            </div>
+        </div>
+
     </div>
-    <div class="text-center">
-        <button onclick="getNFTs()" class="btn btn-primary" style="background-color:#3195d6;" id="deposit">Enable Metamask then
-            Click for Rinkeby NFT's</button>
-    </div>
-        <div class="row m-5" id="picture">
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture0"></div>
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture1"></div>
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture2"></div>
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture3"></div>
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture4"></div>
-            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture5"></div>
+        <div class="row" id="picture">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center" id="picture0"></div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center" id="picture1"></div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center" id="picture2"></div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center" id="picture3"></div>
+            <!-- <div class="col-md-4 col-sm-12 text-center mb-3" id="picture4"></div>
+            <div class="col-md-4 col-sm-12 text-center mb-3" id="picture5"></div> -->
         </div>
 
 

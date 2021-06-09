@@ -42,7 +42,7 @@ background-attachment: fixed;background-size: 26%; color: white; overflow-x: hid
                         </span>
                     </p>
                     <form>
-                        <input class="text-center" type="number" id="input_amount" name="amount_input" placeholder="Deposit LP Tokens"><br><br>
+                        <input class="text-center" type="number" id="input_amount" name="amount_input" placeholder="Enter Amount Here"><br><br>
                     </form>
                     
                     <button onclick="depositLPTokens()" class="btn btn-primary" style="background-color:#3195d6;" id="deposit">Deposit</button>
@@ -79,11 +79,12 @@ background-attachment: fixed;background-size: 26%; color: white; overflow-x: hid
                     </div>
                     <form>
                         <input class="text-center" type="number" id="input_amount_withdraw" name="amount_input_withdraw"
-                            placeholder="Withdraw LP Tokens"><br><br>
+                            placeholder="Enter Amount Here"><br><br>
                     </form>
                     <div>
 
                         <button onclick="withdrawLPTokens()" class="btn btn-primary" style="background-color:#3195d6;" id="withdraw">Withdraw</button>
+                        <!-- <button onclick="harvest()" class="btn btn-primary" style="background-color:#3195d6;" id="withdraw">Harvest</button> -->
                         <div class="popup" onclick="popup()"><i class="fa fa-info-circle"></i>
                             <span class="popuptext" id="Popup">Withdrawing any amount of LP tokens also withdraws your Frog rewards. Please re-deposit your LP
                                 tokens to continue receiving rewards.</span>
