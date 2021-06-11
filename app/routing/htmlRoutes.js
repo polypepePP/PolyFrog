@@ -4,7 +4,7 @@ const router = express.Router();
 
 module.exports = router;
 
-router.get('/mkplace', (__, res) => {
+router.get('/marketplace', (__, res) => {
     res.sendFile(path.join(__dirname, '/../public/html/marketplace.html'));
 });
 

@@ -1,0 +1,28 @@
+{
+    "description": "A polygon frog wearing polygon glasses on a black background.",
+    "external_url": "https://www.polypepe.com",
+    "image": "https://gateway.pinata.cloud/ipfs/QmT3wEWfUjiHNWJTWbuhE24uiu4XdLaSYgRZ1NiXuqnZzT",
+    "name": "Frog with glasses",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Limited Normal Print"
+        },
+        {
+            "trait_type": "Rarity",
+            "value": "Developer"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "One"
+        },
+        {
+            "trait_type": "Power",
+            "value": 85
+        },
+        {
+            "trait_type": "Speed",
+            "value": 75
+        }
+    ]
+}

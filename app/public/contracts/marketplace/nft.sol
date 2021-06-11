@@ -1052,6 +1052,7 @@ pragma solidity ^0.8.0;
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
  */
+ 
 interface FrogInterface {
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
@@ -1067,12 +1068,12 @@ interface FrogInterface {
 
 pragma solidity ^0.8.0;
 
-contract NFT is ERC721URIStorage {
+contract POLYPEPE_NFT_GEN_1 is ERC721URIStorage {
     
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
     
-    constructor(address _frogToken, string memory _metadata, string memory _firstEditionMetadata, uint256 _cost, uint256 _maxMintable) ERC721('TestABC','ABC') {
+    constructor(address _frogToken, string memory _metadata, string memory _firstEditionMetadata, uint256 _cost, uint256 _maxMintable) ERC721("Official PolyPepe NFTs","GEN1") {
         frogToken = _frogToken;
         firstEditionMetadata = _firstEditionMetadata;
         metadata = _metadata;
@@ -1091,7 +1092,17 @@ contract NFT is ERC721URIStorage {
         return _tokenIds.current();
     }
     
-    function mint(address recipient) public onlyOwner returns (uint256) {
+    function makePurchable() public onlyOwner returns (bool) {
+        if(!isPurchable) {
+            isPurchable = true;
+        }
+        else if(isPurchable) {
+            isPurchable = false;
+        }
+        return isPurchable;
+    }
+    
+    function mint(address recipient) internal returns (uint256) {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _mint(recipient, newItemId);
@@ -1099,22 +1110,21 @@ contract NFT is ERC721URIStorage {
         return newItemId;
     }
     
-    function makePurchable() public onlyOwner {
-        if(!isPurchable) {
-        isPurchable = true;
-        }
-        else if(isPurchable) {
-        isPurchable = false;
-        }
-    }
-    
-    function mintFirstEdition() public onlyOwner returns (uint256) {
+    function mintFirstEdition() internal returns (uint256) {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _mint(owner(), newItemId);
         _setTokenURI(newItemId, firstEditionMetadata);
         return newItemId;
     }  
+    
+    function batchMintFirstEdition(uint256 amount) public onlyOwner {
+        uint256 i = 1;
+        while (i <= amount) {
+            i++;
+            mintFirstEdition();
+        }
+    }
     
     function batchMint(uint256 amount, address recipient) public onlyOwner {
         uint256 i = 1;
