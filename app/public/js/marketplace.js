@@ -96,7 +96,7 @@ const nft_metadata_array = [
         "amountSpecial": "5"
     },
     {
-        "description": "Pepe's face appears to be melting off after taking acid.",
+        "description": "Pepe's face appears to be melting off. Uh oh, looks like Pepe forgot his sunscreen!",
         "external_url": "https://www.polypepe.com",
         "image": "./../images/1nfts/gifs/NORMAL_NFTmelt.gif",
         "name": "Face melting Pepe",
