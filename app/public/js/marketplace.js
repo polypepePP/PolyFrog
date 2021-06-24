@@ -37,7 +37,7 @@ async function getAccount() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
     // console.log(accounts[0], 'accounts')
     const account = accounts[0]
-    showAccount.innerHTML = account
+    showAccount.innerHTML = "<h6>Wallet:</h6><p>" + account.match(/.{1,15}/g)[0] + "...</p>"
     currentAccount = account
 
     const balance = await ethereum
@@ -46,18 +46,18 @@ async function getAccount() {
             params: [account, "latest"]
         })
     const read = parseInt(balance) / 10 ** 18
-    // console.log(read.toFixed(5))
-
+    console.log(read.toFixed(5))
     if (network === 137) { // rinkeby=4  matic=137
         getWalletBalanceOfFrogToken(currentAccount)
 
-        document.getElementById('enableMeta').hidden = true
+        document.getElementById('buttonmeta').hidden = true;
+        document.getElementById('enableMeta').innerHTML = "<p>&nbsp;</p>";
         for (i=0; i <= nft_metadata_array.length -1; i++) {
             // console.log(i)
             const purchaseIDName = ("purchaseID" + [i]).toString()
             const openSeaIDName = ("openSeaID" + [i]).toString()
             const enableMetaCardIDName = ("enableMetaCard" + [i]).toString()
-            showBalance.innerHTML = read.toFixed(5)
+            showBalance.innerHTML = "<h6>Matic:</h6><p>" + read.toFixed(5) + "</p>"
             // const idName = ("picture" + [i]).toString()
             
             document.getElementById(enableMetaCardIDName).hidden = true
@@ -69,7 +69,7 @@ async function getAccount() {
         }
 
     } else {
-        document.getElementById('enableMeta').innerHTML = "Switch to Matic Network and Try Again"
+        document.getElementById('buttonmeta').innerHTML = "Switch to Matic Network and Try Again"
     }
 }
 
@@ -179,7 +179,7 @@ function getWalletBalanceOfFrogToken(currentAccount) {
         // console.log(parseInt(frogBalance) / 10 ** 18, "balance Of LP Token In Users Wallet")
         const balance = parseInt(frogBalance) / 10 ** 18
         currentUsersLpBalance = balance
-        document.getElementById('currentAddressFrogBalance').innerHTML = Number(balance).toLocaleString()
+        document.getElementById('currentAddressFrogBalance').innerHTML = "<h6>Frog:</h6><p>" + Number(balance).toLocaleString() + "</p>"
     })
 }
 

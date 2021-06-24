@@ -4,10 +4,12 @@ const router = express.Router();
 
 module.exports = router;
 
-router.get('/marketplace', (__, res) => {
-    res.sendFile(path.join(__dirname, '/../public/html/marketplace.html'));
-});
-
 router.get('/', (__, res) => {
-    res.sendFile(path.join(__dirname, '/../public/html/farm.html'));
+    res.sendFile(path.join(__dirname, '/../public/html/newfarm.html'));
 });
+router.get('/marketplace/1', (__, res) => {
+    res.sendFile(path.join(__dirname, '/../public/html/newmarketplace.html'));
+});
+// router.get('/marketplace/2', (__, res) => {
+//     res.sendFile(path.join(__dirname, '/../public/html/marketplace2.html'));
+// });

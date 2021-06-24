@@ -9,8 +9,8 @@ if (typeof window.ethereum !== 'undefined') {
 }
 
 const ethereumButton = document.querySelector('.enableEthereumButton')
-// const showAccount = document.querySelector('.showAccount')
-// const showBalance = document.querySelector('.showBalance')
+const showAccount = document.querySelector('#showAccount')
+const showBalance = document.querySelector('#showBalance')
 
 let currentUsersLpBalance = 0
 let currentUsersDepositedLpBalance = 0
@@ -30,10 +30,13 @@ function numberWithCommas(x) {
 }
 
 async function getAccount() {
+    const network = await web3Instance.eth.net.getId()
+    console.log("network ID: ", network)
     const accounts = await ethereum.request({ method: 'eth_requestAccounts'})
-    // console.log(accounts[0], 'accounts')
+    console.log(accounts[0], 'accounts')
     const account = accounts[0]
-    // showAccount.innerHTML = account
+    // console.log("abcd".match(/.{1,3}/g))
+    showAccount.innerHTML = "<h6>Wallet:</h6><p>" + account.match(/.{1,15}/g)[0] + "...</p>"
     currentAccount = account
 
     const balance = await ethereum
@@ -43,16 +46,20 @@ async function getAccount() {
     })
     const read = parseInt(balance)/ 10**18
     // console.log(read.toFixed(5))
-    
-    // showBalance.innerHTML = read.toFixed(5)
-    document.getElementById('enableMeta').hidden = true
-    getPoolBalance()
-    getDepositedLPTokenBalance()
-    getYieldUpdate()
-    getWalletBalanceOfLPToken()
-    checkApproval_account()
-    getPoolPercent()
-    paidOut()
+    if (network === 137) { // rinkeby=4  matic=137
+        showBalance.innerHTML = "<h6>Matic:</h6><p>" + read.toFixed(5) +"</p>"
+        document.getElementById('buttonmeta').hidden = true;
+        document.getElementById('enableMeta').innerHTML = "<p>&nbsp;</p>";
+        getPoolBalance()
+        getDepositedLPTokenBalance()
+        getYieldUpdate()
+        getWalletBalanceOfLPToken()
+        checkApproval_account()
+        getPoolPercent()
+        paidOut()
+    } else {
+        document.getElementById('buttonmeta').innerHTML = "Switch to Matic Network and Try Again"
+    }
 }
 
 const etherscan_tx = "<a target='_blank' href='https://explorer-mainnet.maticvigil.com/tx/"
@@ -286,7 +293,7 @@ function getPoolPercent() {
             // console.log(parseInt(yieldBalanceForUserInFarm) / 10 ** 9, "yield Balance For User")
             const balanceOfUserInFarm = parseInt(yieldBalanceForUserInFarm) / 10 ** 18
             // console.log((balanceOfUserInFarm / balanceOfFarm)*100, "percent")
-            document.getElementById('percentOfFarm').innerHTML = (balanceOfUserInFarm / balanceOfFarm) * 100 + "%"
+            document.getElementById('percentOfFarm').innerHTML = ((balanceOfUserInFarm / balanceOfFarm) * 100).toFixed(5)+ "%"
         })
     })
 }
