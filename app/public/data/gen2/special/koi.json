@@ -1,0 +1,16 @@
+{
+    "name": "Koi Pepe",
+    "description": "Can’t touch deez vibes.",
+    "external_url": "https://www.polypepe.farm/marketplace/2",
+    "image": "ipfs://QmPm6VBJBY1Ft4t9CWistCkieoHTkKnx1sL6AHf3sUT36L/special/koi.gif",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Signed First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "2"
+        }
+    ]
+}

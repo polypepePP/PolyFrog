@@ -1,0 +1,16 @@
+{
+    "name": "John McAssfee",
+    "description": "True legend. RIP",
+    "external_url": "https://www.polypepe.farm/marketplace/2",
+    "image": "ipfs://QmPm6VBJBY1Ft4t9CWistCkieoHTkKnx1sL6AHf3sUT36L/special/mcafee.gif",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Signed First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "2"
+        }
+    ]
+}

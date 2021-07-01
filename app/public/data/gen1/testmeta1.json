@@ -1,0 +1,28 @@
+{
+    "description": "test special",
+    "external_url": "https://www.google.com",
+    "image": "https://gateway.pinata.cloud/ipfs/QmeEZ9nnXVxntNk6bem6UtEHfiQ65jQEbzK5WQ6eRANnwi",
+    "name": "test",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Limited First Print"
+        },
+        {
+            "trait_type": "Rarity",
+            "value": "Developer"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "One"
+        },
+        {
+            "trait_type": "Power",
+            "value": 85
+        },
+        {
+            "trait_type": "Speed",
+            "value": 75
+        }
+    ]
+}

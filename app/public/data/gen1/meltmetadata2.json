@@ -1,0 +1,28 @@
+{
+    "description": "Pepe's face appears to be melting off after taking acid.",
+    "external_url": "https://www.polypepe.com",
+    "image": "https://gateway.pinata.cloud/ipfs/QmQbYCeKu9niP5Rh4inRaQnWGdTLEZ47Hn3bajyWe9kkXf",
+    "name": "Face Melting Pepe",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Limited Normal Print"
+        },
+        {
+            "trait_type": "Rarity",
+            "value": "Rare"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "One"
+        },
+        {
+            "trait_type": "Power",
+            "value": 75
+        }, 
+        {
+            "trait_type": "Speed",
+            "value": 55
+        } 
+    ]
+}

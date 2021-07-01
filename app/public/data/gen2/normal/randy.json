@@ -1,0 +1,16 @@
+{
+    "name": "Microwaving Randy",
+    "description": "Just gonna get a little cancer fam.",
+    "external_url": "https://www.polypepe.farm/marketplace/2",
+    "image": "ipfs://QmPm6VBJBY1Ft4t9CWistCkieoHTkKnx1sL6AHf3sUT36L/normal/randy.gif",
+    "attributes": [
+        {
+            "trait_type": "Special",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "2"
+        }
+    ]
+}
