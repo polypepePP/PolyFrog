@@ -1,0 +1,16 @@
+{
+    "name": "The Dom",
+    "description": "The new face of PolyPepe. Hodl your pp and someday you'll be just like him.",
+    "external_url": "https://www.polypepe.farm/marketplace/3",
+    "image": "ipfs://QmUjiiJXwC4Hirupv1p2Bv4ZKz1Gko7CjTrJW9n97ESyvw/normal/dom.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "3"
+        }
+    ]
+}

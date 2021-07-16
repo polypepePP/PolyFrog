@@ -1,0 +1,16 @@
+{
+    "name": "Farmer PP in Space #1",
+    "description": "Farmer PP went out to see what the ruckus was. That's the last anyone ever saw of him.",
+    "external_url": "https://www.polypepe.farm/marketplace/3",
+    "image": "ipfs://QmUjiiJXwC4Hirupv1p2Bv4ZKz1Gko7CjTrJW9n97ESyvw/special/alien.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "3"
+        }
+    ]
+}
