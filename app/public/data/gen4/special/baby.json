@@ -1,0 +1,16 @@
+{
+    "name": "Baby PolyPepe",
+    "description": "Not sure who the parents are, but damn sure that they are raising him right.",
+    "external_url": "https://www.polypepe.farm/marketplace/4",
+    "image": "ipfs://QmPaSL9Z98evXJ5e8KnzKiEZhxnan8WeVFjM49X4BbGzs3/special/baby.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "4"
+        }
+    ]
+}

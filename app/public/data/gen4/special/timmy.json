@@ -1,0 +1,16 @@
+{
+    "name": "Olympic Timmy",
+    "description": "Timmeh! Libinalah! Timmeh!",
+    "external_url": "https://www.polypepe.farm/marketplace/4",
+    "image": "ipfs://QmPaSL9Z98evXJ5e8KnzKiEZhxnan8WeVFjM49X4BbGzs3/special/timmy.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "4"
+        }
+    ]
+}

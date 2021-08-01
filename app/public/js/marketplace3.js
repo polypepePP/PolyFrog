@@ -120,14 +120,14 @@ const nft_metadata_array = [
         "name": "Farmer PP in Space #1",
         "contract": "0x7e60c583BfB153a525C0D4f7E84A4031923805a5",
         "amountSpecial": "2"
-    },
-    {
-        "description": "Finally this P.O.S. gets what he deserves. Get rekt Kim!",
-        "external_url": "https://www.polypepe.farm/marketplace/2",
-        "image": "./../images/gen3/gifs/normal/kim.gif",
-        "name": "Kim Jong Ow",
-        "contract": "0x1a7F135B591c35ffEA8EE579B13FA6aC5A5443E1",
-        "amountSpecial": "1"
+    // },
+    // {
+    //     "description": "Finally this P.O.S. gets what he deserves. Get rekt Kim!",
+    //     "external_url": "https://www.polypepe.farm/marketplace/2",
+    //     "image": "./../images/gen3/gifs/normal/kim.gif",
+    //     "name": "Kim Jong Ow",
+    //     "contract": "0x1a7F135B591c35ffEA8EE579B13FA6aC5A5443E1",
+    //     "amountSpecial": "1"
     }
 ]
 
@@ -145,7 +145,7 @@ function getNFTs() {
     getContractData(1)
     getContractData(2)
     getContractData(3)
-    getContractData(4)
+    // getContractData(4)
 }
 
 function getContractData(contractNumber) {
