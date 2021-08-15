@@ -90,43 +90,35 @@ const success = "'>Success! Click to view Transaction</a>"
 
 const nft_metadata_array = [
     {
-        "description": "OSHA ain’t gonna be too happy about this one.",
-        "external_url": "https://www.polypepe.farm/marketplace/4",
-        "image": "./../images/gen4/gifs/normal/worker.gif",
-        "name": "Construction PolyPepe",
-        "contract": "0xdE7a3C460d3E1b127C62327CF0CbC2de131168b1",
-        "amountSpecial": "10"
-    },
-    {
-        "description": "Not sure who the parents are, but damn sure that they are raising him right.",
-        "external_url": "https://www.polypepe.farm/marketplace/4",
-        "image": "./../images/gen4/gifs/normal/baby.gif",
-        "name": "Baby PolyPepe",
-        "contract": "0x8408644FC8e2363fA0011A75730e4fcAAF7feF44",
+        "description": "Get PP, get laid. Nuff said.",
+        "external_url": "https://www.polypepe.farm/marketplace/5",
+        "image": "./../images/gen5/gifs/normal/washington.gif",
+        "name": "George",
+        "contract": "0x0A8b6fE4fB5C7B86c6635D51Af72F74EcAc18996",
         "amountSpecial": "5"
     },
     {
-        "description": "Timmeh! Libinalah! Timmeh!",
-        "external_url": "https://www.polypepe.farm/marketplace/4",
-        "image": "./../images/gen4/gifs/normal/timmy.gif",
-        "name": "Olympic Timmy",
-        "contract": "0xa061a0d0ecfDD0eB259D6aE3a67518ccFaFe5b99",
+        "description": "Sick of being beaten and abused by his arch-nemesis Grim. Kenny finally takes matters into his own hands and does what he should have done a long time ago.",
+        "external_url": "https://www.polypepe.farm/marketplace/5",
+        "image": "./../images/gen5/gifs/normal/kenny.gif",
+        "name": "Grim vs Pepe Kenny",
+        "contract": "0xC8ADC8E5aeA5B4aa6b277E0627Cde679cb8f5FDB",
         "amountSpecial": "5"
     },
     {
-        "description": "Finally freeing himself from captivity of the evil Alien Zerg, Farmer PP wishes he knew how to fly the space ship. Hope this bitch has airbags…",
-        "external_url": "https://www.polypepe.farm/marketplace/4",
-        "image": "./../images/gen4/gifs/normal/alien.gif",
-        "name": "Farmer PP in Space #2",
-        "contract": "0x45bA0F2b60404F47aCC4cB9DC9378aC15d3AE01E",
+        "description": "Farmer PP has crash landed on a strange planet called Tatooine. He is near suffocating in the sand when he feels himself lifted by a strange force. He is then groped by a strange man called PepeWan. WTF is going on?",
+        "external_url": "https://www.polypepe.farm/marketplace/5",
+        "image": "./../images/gen5/gifs/normal/obiwan.gif",
+        "name": "Farmer PP in Space #3",
+        "contract": "0x067a8D9208e6eCB95F38907c51eA5fE4af4e4b73",
         "amountSpecial": "2"
     },
     {
-        "description": "No problem with being transgender, just please leave women’s sports alone. Pretty please.",
-        "external_url": "https://www.polypepe.farm/marketplace/4",
-        "image": "./../images/gen4/gifs/normal/wrestler.gif",
-        "name": "Laurel Hubbard",
-        "contract": "0xDC005137c274b9472efefB5aB07033cd1c0900F1",
+        "description": "'My grandson got me into crypto.I chose PolyPepe because of a comprehensive whitepaper and the community.'",
+        "external_url": "https://www.polypepe.farm/marketplace/5",
+        "image": "./../images/gen5/gifs/normal/grandma.gif",
+        "name": "Martha",
+        "contract": "0x54A27259dCE1D2Fe78368f10251B84057b1B326c",
         "amountSpecial": "1"
     }
 ]
@@ -145,7 +137,7 @@ function getNFTs() {
     getContractData(1)
     getContractData(2)
     getContractData(3)
-    getContractData(4)
+    // getContractData(4)
 }
 
 function getContractData(contractNumber) {
