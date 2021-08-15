@@ -1,5 +1,5 @@
 {
-  "name": "theonering",
+  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LOTRfinance/theonering.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LOTRfinance/theonering/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/LOTRfinance/theonering#readme",
+  "homepage": "",
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
