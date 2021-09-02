@@ -1,0 +1,16 @@
+{
+    "name": "Farmer PP in Space #4",
+    "description": "Bzzzzshhhhhewww",
+    "external_url": "https://www.polypepe.farm/marketplace/6",
+    "image": "ipfs://QmY9YpTcYubRFszJDZs1qyx4qR25n6WZEhfdBEWNa4nA65/normal/farmer.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "6"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "name": "John",
+    "description": "“I bought some PP and got laid. Thank You George!”",
+    "external_url": "https://www.polypepe.farm/marketplace/6",
+    "image": "ipfs://QmY9YpTcYubRFszJDZs1qyx4qR25n6WZEhfdBEWNa4nA65/special/john.gif",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "First Edition"
+        },
+        {
+            "trait_type": "Generation",
+            "value": "6"
+        }
+    ]
+}

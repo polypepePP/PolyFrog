@@ -22,3 +22,6 @@ router.get('/marketplace/4', (__, res) => {
 router.get('/marketplace/5', (__, res) => {
     res.sendFile(path.join(__dirname, '/../public/html/marketplace5.html'));
 });
+router.get('/marketplace/6', (__, res) => {
+    res.sendFile(path.join(__dirname, '/../public/html/marketplace6.html'));
+});
